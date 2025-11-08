@@ -1,0 +1,116 @@
+
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Números Primos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-weight: bold;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Calculadora de Números Primos</h1>
+    <form action="PrimosServlet" method="post" onsubmit="return validarFormulario()">
+        <div class="form-group">
+            <label for="inicio">Inicio del Rango:</label>
+            <input type="number" id="inicio" name="inicio" required min="1">
+            <span id="errorInicio" class="error"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="fin">Fin del Rango:</label>
+            <input type="number" id="fin" name="fin" required min="1">
+            <span id="errorFin" class="error"></span>
+        </div>
+
+        <button type="submit">Calcular Números Primos</button>
+    </form>
+</div>
+
+<script>
+    // Función para validar el formulario antes de enviar
+    function validarFormulario() {
+        var inicio = parseInt(document.getElementById('inicio').value);
+        var fin = parseInt(document.getElementById('fin').value);
+        var errorInicio = document.getElementById('errorInicio');
+        var errorFin = document.getElementById('errorFin');
+
+        // Limpiar mensajes de error previos
+        errorInicio.textContent = '';
+        errorFin.textContent = '';
+
+        var esValido = true;
+
+        // Validar que el inicio sea mayor que 0
+        if (inicio < 1) {
+            errorInicio.textContent = 'El inicio debe ser mayor o igual a 1';
+            esValido = false;
+        }
+
+        // Validar que el fin sea mayor que el inicio
+        if (fin <= inicio) {
+            errorFin.textContent = 'El fin debe ser mayor que el inicio';
+            esValido = false;
+        }
+
+        return esValido;
+    }
+</script>
+</body>
+</html>>
