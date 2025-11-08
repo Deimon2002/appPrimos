@@ -97,8 +97,6 @@ public class PDFServlet extends HttpServlet {
             // Agregar el título al documento
             documento.add(titulo);
 
-            // SECCIÓN 2: INFORMACIÓN DEL RANGO
-
 
             // Crear fuente normal para información: Helvetica, tamaño 12
             Font fuenteInfo = new Font(Font.FontFamily.HELVETICA, 12, Font.NORMAL);
@@ -113,8 +111,6 @@ public class PDFServlet extends HttpServlet {
             // Agregar una línea en blanco
             documento.add(Chunk.NEWLINE);
 
-            // SECCIÓN 3: LÍNEA SEPARADORA
-
             // Crear y agregar una línea horizontal para separar secciones
             LineSeparator linea = new LineSeparator();
             documento.add(linea);
@@ -122,7 +118,6 @@ public class PDFServlet extends HttpServlet {
             // Agregar otra línea en blanco después de la línea separadora
             documento.add(Chunk.NEWLINE);
 
-            // SECCIÓN 4: SUBTÍTULO
 
             // Crear fuente para subtítulo: Helvetica, tamaño 14, negrita
             Font fuenteSubtitulo = new Font(Font.FontFamily.HELVETICA, 14, Font.BOLD);
@@ -135,8 +130,6 @@ public class PDFServlet extends HttpServlet {
 
             // Agregar el subtítulo al documento
             documento.add(subtitulo);
-
-            // SECCIÓN 5: TABLA DE NÚMEROS PRIMOS
 
             // Verificar si hay números primos para mostrar
             if (primos.isEmpty()) {
@@ -183,8 +176,6 @@ public class PDFServlet extends HttpServlet {
                 documento.add(tabla);
             }
 
-            // SECCIÓN 6: PIE DE PÁGINA CON FECHA
-
             // Agregar dos líneas en blanco para separar del contenido
             documento.add(Chunk.NEWLINE);
             documento.add(Chunk.NEWLINE);
@@ -202,7 +193,6 @@ public class PDFServlet extends HttpServlet {
             // Agregar el pie al documento
             documento.add(pie);
 
-            // PASO 8: Cerrar el documento
             // Esto finaliza el PDF y lo envía al navegador
             // Es MUY IMPORTANTE cerrar el documento
             documento.close();
